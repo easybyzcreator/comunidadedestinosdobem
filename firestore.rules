@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isValidInscricao(data) {
+      return data.nome is string && data.nome.size() > 0 && data.nome.size() < 150 &&
+             data.whatsapp is string && data.whatsapp.size() >= 8 &&
+             data.cidade is string;
+    }
+
+    function isValidCounter(data) {
+      return data.count is number && data.count >= 0;
+    }
+
+    // Inscrições Comunidade Destinos do Bem
+    match /inscricoes/{inscricaoId} {
+      allow create: if isValidInscricao(request.resource.data);
+      allow read, update, delete: if false;
+    }
+
+    // Contador sequencial de inscrições
+    match /config/{counterId} {
+      allow get: if true;
+      allow create, update: if isValidCounter(request.resource.data);
+      allow list, delete: if false;
+    }
+  }
+}
+

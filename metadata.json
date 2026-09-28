@@ -1,0 +1,8 @@
+{
+  "name": "COMUNIDADE DESTINOS DO BEM",
+  "description": "Comunidade Destinos do Bem - Um passaporte para experiências que fazem o bem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

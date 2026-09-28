@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Inscricao": {
+      "title": "Inscrição Comunidade Destinos do Bem",
+      "description": "Dados do membro cadastrado na Comunidade Destinos do Bem",
+      "type": "object",
+      "properties": {
+        "nome": { "type": "string" },
+        "faixaEtaria": { "type": "string" },
+        "pcd": { "type": "string" },
+        "necessitaAcessibilidade": { "type": "string" },
+        "acessibilidadeQual": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "cidade": { "type": "string" },
+        "numeroInscricao": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["nome", "faixaEtaria", "pcd", "necessitaAcessibilidade", "whatsapp", "cidade"]
+    },
+    "Counter": {
+      "title": "Contador",
+      "description": "Contador sequencial de inscrições",
+      "type": "object",
+      "properties": {
+        "count": { "type": "number" }
+      },
+      "required": ["count"]
+    }
+  },
+  "firestore": {
+    "/inscricoes/{inscricaoId}": {
+      "schema": "Inscricao",
+      "description": "Coleção de cadastros da Comunidade Destinos do Bem"
+    },
+    "/config/registrationCounter": {
+      "schema": "Counter",
+      "description": "Documento único para controle do contador"
+    }
+  }
+}
